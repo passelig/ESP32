@@ -19,9 +19,9 @@ WiFiMulti wifiMulti;
 #define WIFI_SSID "Gunnar"                                                                                        //Network Name
 #define WIFI_PASSWORD "Hemmelig"                                                                                //Network Password
 #define INFLUXDB_URL "https://eu-central-1-1.aws.cloud2.influxdata.com"                                                                                     //InfluxDB v2 server url, e.g. https://eu-central-1-1.aws.cloud2.influxdata.com (Use: InfluxDB UI -> Load Data -> Client Libraries)
-#define INFLUXDB_TOKEN "z96gqOCcpcJiV_hZ8A1q-JUCUtA42HRCLRmg3Nz9QSsClCUw7RdqvYnjBsdGmAw5w-cvUiqDQKaAt4h0DdZe2w=="                                                                                 //InfluxDB v2 server or cloud API token (Use: InfluxDB UI -> Data -> API Tokens -> <select token>)
-#define INFLUXDB_ORG "86ea0b1b23ab37ae"                                                                                     //InfluxDB v2 organization id (Use: InfluxDB UI -> User -> About -> Common Ids )
-#define INFLUXDB_BUCKET "3robdig"                                                                                         //InfluxDB v2 bucket name (Use: InfluxDB UI ->  Data -> Buckets)
+#define INFLUXDB_TOKEN "H0MP8ujfIuRBr3JiWDad3eoKNy0e6dzomjg9Ad4oNN3pqHaimo6Z5f5zVjMJdoeQUpGFh7F1gdVnU-YPnq-oqg=="                                                                                 //InfluxDB v2 server or cloud API token (Use: InfluxDB UI -> Data -> API Tokens -> <select token>)
+#define INFLUXDB_ORG "ee88c36162f2d933"                                                                                     //InfluxDB v2 organization id (Use: InfluxDB UI -> User -> About -> Common Ids )
+#define INFLUXDB_BUCKET "2robdig"                                                                                         //InfluxDB v2 bucket name (Use: InfluxDB UI ->  Data -> Buckets)
 #define TZ_INFO "AEDT+11"                                                                                                 //InfluxDB v2 timezone
 
 DHT dht(13,DHT22);                                                   //DHT sensor parameters
@@ -31,7 +31,7 @@ int humid = 0;
 
 InfluxDBClient client(INFLUXDB_URL, INFLUXDB_ORG, INFLUXDB_BUCKET, INFLUXDB_TOKEN, InfluxDbCloud2CACert);                 //InfluxDB client instance with preconfigured InfluxCloud certificate
 
-Point sensor("gunnarUke12");                                            //Data point
+Point sensor("gunnarUke21");                                            //Data point
 
 void setup() 
 {
@@ -77,7 +77,7 @@ void loop()                                                          //Loop func
   sensor.clearFields();                                              //Clear fields for reusing the point. Tags will remain untouched
 
   sensor.addField("temperature", temp);                              // Store measured value into point
-  //sensor.addField("humidity", humid);                                // Store measured value into point
+  sensor.addField("humidity", humid);                                // Store measured value into point
   
 
     
