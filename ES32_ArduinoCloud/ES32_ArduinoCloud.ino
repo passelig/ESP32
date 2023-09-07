@@ -1,4 +1,4 @@
-
+// hei
 
 #include "thingProperties.h"
 #include <DHT.h>
